@@ -1,0 +1,19 @@
+{
+  "short_name": "Cash Flow",
+  "name": "Cash Flow",
+  "icons": [{
+    "src": "/icons/144x144.png",
+    "sizes": "144x144",
+    "type": "image/png"
+  }, {
+    "src": "/icons/512x512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
+  }],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "theme_color": "#fd9800",
+  "background_color": "#ffffff"
+}
