@@ -114,9 +114,20 @@ table.addEventListener('click', e => {
   }
 })
 
-function getTotalBalance() {
+function getTotalBalance(message = "Add to your current balance") {
   let transaction = readMemory();
-  transaction.totalBalance += parseInt(prompt("Add to current balance"));
+  let input, money = 0;
+  input = parseInt(prompt(message));
+  if (input.toString() === "NaN" || input === "") {
+    getInput("You entered an invalid value\n please enter numeric values..");
+  } else if (input < 0) {
+    getInput("Enter positive values");
+  } else {
+    if (confirm(`add ${input} to your current balance?`)) {
+      money = input;
+    }
+    transaction.totalBalance += money;
+  }
   updateMemory(transaction);
   displayData();
 }
