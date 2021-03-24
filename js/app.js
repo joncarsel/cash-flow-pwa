@@ -92,7 +92,7 @@ function displayData() {
     table.innerHTML = "";
     thisDay.moneySpent.forEach(element => {
       table.innerHTML += `<tr id="${element.id}">
-      <td>${element.id}.</td>
+      <td>${element.id+1}.</td>
       <td>${element.amount}</td>
       <td>${element.time}</td>
       <td>${element.description}</td>
@@ -120,13 +120,15 @@ function getTotalBalance(message = "Add to your current balance") {
   input = parseInt(prompt(message));
   if (input.toString() === "NaN" || input === "") {
     getInput("You entered an invalid value\n please enter numeric values..");
-  } else if (input < 0) {
-    getInput("Enter positive values");
+  } else if (input < 0 || input > 999999) {
+    getInput("Please enter values between 0 and 999,999");
   } else {
     if (confirm(`add ${input} to your current balance?`)) {
       money = input;
     }
-    transaction.totalBalance += money;
+    let balance = parseInt(transaction.totalBalance);
+    balance += money;
+    transaction.totalBalance = balance
   }
   updateMemory(transaction);
   displayData();
